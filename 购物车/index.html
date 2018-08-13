@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>购物车页面</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="ap" v-cloak>
+        <template v-if="list.length">
+            <table>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>商品名称</th>
+                        <th>商品单价</th>
+                        <th>购买数量</th>
+                        <th>操作</th>
+                        <th>选择</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in list">
+                        <td>{{index+1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                        
+                        <td>
+                            <button @click="countReduce(index)" :disabled="item.count==1">-</button>{{item.count}}
+                            <button @click="countAdd(index)">+</button></td>
+                            <td><button @click="removeItem(index)">移除</button></td>
+                            <td><input type="checkbox" v-model="checked" :value="thisValue(index)" ></td>
+                        
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr >
+                        <td colspan="5">总价:{{totalPrice}}</td>
+                        <td><span>全选:</span><input type="checkbox"  @click="allChoose()" v-model="list.length===checked.length" ></td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+        </template>
+        <div v-else>
+            你的购物车已经空了
+        </div>
+    </div>
+    <script src="../vue.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

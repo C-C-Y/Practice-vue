@@ -1,0 +1,21 @@
+[v-cloak]{
+    display: none;
+}
+table{
+  border:solid 1px black;
+  border-collapse: collapse;
+  empty-cells: show
+}
+tr,td{
+    border:solid 1px black;
+    text-align: left;
+}
+th{
+    border:solid 1px black;
+    background-color: #f7f7f7;
+    font-weight: 600;
+    white-space: nowrap;
+}
+tfoot td{
+    text-align: center;
+}
