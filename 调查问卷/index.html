@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>调查问卷</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="app" v-cloak>
+        <div v-show="nowShow==1" class="container">
+            <div class="content">
+                <p>1.请问您的性别是:</p>
+                <div class="options">
+                    <input type="radio" id="man" name="yourSex" value="man" v-model="sexChoice">
+                    <label for="man">男</label>
+                    <input type="radio" id="woman" name="yourSex" value="woman" v-model="sexChoice">
+                    <label for="woman">女</label>
+                    <input type="radio" id="secret" name="yourSex" value="secret" v-model="sexChoice">
+                    <label for="secret">保密</label>
+                </div>
+            </div>
+            <div class="btn-container">
+                <my-button text="下一步" :check-next="sexNext" name="next" @click="handleChange" cla="two"></my-button>
+                <my-button text="重置" name="reset" @click="handleChange" cla="two"></my-button>
+            </div>
+        </div>
+        <div v-show="nowShow==2" class="container">
+            <div class="content">
+
+                <p>2.请选择您的兴趣爱好:</p>
+                <div class="options">
+                    <input type="checkbox" name="hob" id="book" value="book" v-model="hobChoice">
+                    <label for="book">看书</label>
+                    <br/>
+                    <br>
+                    <input type="checkbox" name="hob" id="swim" value="swim" v-model="hobChoice">
+                    <label for="swim">游泳</label>
+                    <br/>
+                    <br>
+                    <input type="checkbox" name="hob" id="run" value="run" v-model="hobChoice">
+                    <label for="run">跑步</label>
+                    <br/>
+                    <br>
+                    <input type="checkbox" name="hob" id="movie" value="movie" v-model="hobChoice">
+                    <label for="movie">看电影</label>
+                    <br/>
+                    <br>
+                    <input type="checkbox" name="hob" id="music" value="music" v-model="hobChoice">
+                    <label for="music">听音乐</label>
+                </div>
+            </div>
+            <div class="btn-container">
+                <my-button text="下一步" :check-next="hobNext" name="next" @click="handleChange" cla="three"></my-button>
+                <my-button text="上一步" name="previous" @click="handleChange" cla="three"></my-button>
+                <my-button text="重置" name="reset" @click="handleChange" cla="three"></my-button>
+            </div>
+
+        </div>
+        <div v-show="nowShow==3" class="container">
+            <div class="content">
+                <p>3.请介绍下自己:</p>
+                <div class="options">
+                    <textarea name="intro" id="intro" cols="45" rows="5" placeholder="不少于100字" v-model="text"></textarea>
+                </div>
+            </div>
+            <div class="btn-container">
+                <my-button text="提交" :check-next="submit" name="submit" @click="handleChange" cla="three"></my-button>
+                <my-button text="上一步" name="previous" @click="handleChange" cla="three"></my-button>
+                <my-button text="重置" name="reset" @click="handleChange" cla="three"></my-button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../vue.js"></script>
+    <script src="my-button.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
